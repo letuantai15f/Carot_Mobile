@@ -22,7 +22,7 @@ const AddFriends = () =>{
                 <View  style={styles.namePeople1}>
                     <Text style={styles.name1}>Lê Tuấn Tài</Text>
                     <View style={styles.btn1}>
-                        <View style={styles.btnAccept1}><Button title="Chấp nhận"/></View>
+                        <View style={styles.btnAccept1}><Button  title="Chấp nhận"/></View>
                          <View style={styles.btnRefuse1}><Button title="Gỡ"/></View>  
                     </View>
                 </View>
@@ -34,7 +34,7 @@ const AddFriends = () =>{
                 <View  style={styles.namePeople2}>
                     <Text style={styles.name2}>Lê Tuấn Tài</Text>
                     <View style={styles.btn2}>
-                        <View style={styles.btnAccept2}><Button title="Chấp nhận"/></View>
+                        <View style={styles.btnAccept2}><Button title="Chấp nhận" /></View>
                          <View style={styles.btnRefuse2}><Button title="Gỡ"/></View>  
                     </View>
                 </View>
