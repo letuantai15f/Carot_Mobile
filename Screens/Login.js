@@ -5,14 +5,11 @@ import {Text,Image, View,SafeAreaView,StyleSheet, TextInput, TouchableOpacity} f
 import imgcarrot from '../assets/carrot.png'
 import {useFonts} from 'expo-font'
 import imgGG from '../assets/google-logo-9824.png'
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-
-// const Login=()=>{
- 
-// }
-
-function Login() {
+function Login({navigation}) {
   let [fontsLoaded]=useFonts({
     'XBall':require('../assets/fonts/XBall.ttf')
   });
@@ -35,8 +32,9 @@ function Login() {
           <Text style={styles.textnoti}>Quên mật khẩu ?</Text>
           
       </View>
-      <TouchableOpacity onPress={()=>{}}style={styles.button}>
+      <TouchableOpacity onPress={()=> navigation.navigate("Home",{screen:'AppNavigator'})}style={styles.button}>
             <Text style={{textAlign:'center',fontWeight:'700',fontSize:30,color:'#fff'}}>ĐĂNG NHẬP</Text>
+
           </TouchableOpacity>
           <Text style={{fontSize:20, marginTop:15}}>Hoặc</Text>
           <Text style={{color:'red', fontSize:25,margin:5}}>Đăng ký</Text>

@@ -1,11 +1,20 @@
 import React  from "react";
-import {View,StyleSheet,Text} from 'react-native'
+import {View,StyleSheet,Text,Image, ScrollView,FlatList} from 'react-native'
 
-const Chat = () =>{
+import ChatRoomItem from '../Components/ChatRoomItem/ChatRoomItem'
+import chatRoomsData from '../assets/dummy-data/ChatRooms';
+
+
+export default function Chat(){
     return(
-        <View style={styles.container}>
-            <Text>Chat</Text>
-        </View>
+        <View style={styles.page}>   
+            <FlatList
+            data={chatRoomsData}
+            renderItem={({item})=><ChatRoomItem chatRoom={item}/>}
+            showsVerticalScrollIndicator={false}
+            />
+        
+       </View>
     );
 }
 
@@ -16,5 +25,3 @@ const styles=StyleSheet.create({
         alignItems:"center"
     },
 });
-
-export default Chat;

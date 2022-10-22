@@ -19,7 +19,7 @@ import { Colors } from "react-native-paper";
 
 const Tab = createMaterialTopTabNavigator();
 
-const AppNavigator = () =>{
+const AppNavigator = (navigation) =>{
     return(
         <Tab.Navigator style={styles.container}>
         {/* <Tab.Navigator style={{paddingTop:StatusBar.currentHeight}}></Tab.Navigator> */}
