@@ -1,61 +1,26 @@
 import React  from "react";
-import {View,StyleSheet,Text} from 'react-native'
+import {View,StyleSheet,Text,Image, ScrollView,FlatList} from 'react-native'
 
-const Chat = () =>{
+import ChatRoomItem from '../Components/ChatRoomItem/ChatRoomItem'
+import chatRoomsData from '../assets/dummy-data/ChatRooms';
+
+
+export default function Chat(){
     return(
-        <View style={styles.container}>
-            <Text>Chat</Text>
-        </View>
+        <View style={styles.page}>   
+            <FlatList
+            data={chatRoomsData}
+            renderItem={({item})=><ChatRoomItem chatRoom={item}/>}
+            showsVerticalScrollIndicator={false}
+            />
+           
+       </View>
     );
 }
 
-//     if (!user) {
-//         return (
-//             <View style={styles.container}>
-//                 <TextInput style={styles.input} placeholder="Enter your name" value={name} onChangeText={setName} />
-//                 <Button onPress={handlePress} title="Enter the chat" />
-//             </View>
-//         )
-//     }
-//     return <GiftedChat messages={messages} user={user} onSend={handleSend} />
-// }
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         backgroundColor: '#fff',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         padding: 30,
-//     },
-//     input: {
-//         height: 50,
-//         width: '100%',
-//         borderWidth: 1,
-//         padding: 15,
-//         marginBottom: 20,
-//         borderColor: 'gray',
-//     },
-// })
-
-//***************************************************************************** */
-// import React  from "react";
-// import {View,StyleSheet,Text} from 'react-native'
-
-// const Chat = () =>{
-//     return(
-//         <View style={styles.container}>
-//             <Text>Chat</Text>
-//         </View>
-//     );
-// }
-
-// const styles=StyleSheet.create({
-//     container:{
-//         flex:1,
-//         justifyContent:"center",
-//         alignItems:"center"
-//     },
-// });
-
-export default Chat;
+const styles=StyleSheet.create({
+    page:{
+        backgroundColor:'white',
+        flex:1
+    }
+});
