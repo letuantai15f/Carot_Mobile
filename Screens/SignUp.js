@@ -1,6 +1,6 @@
 import React  , {useState } from 'react';
 import {View, StyleSheet,Text ,TouchableOpacity,TextInput} from 'react-native';
-// import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { firebase } from '../config/firebaseSDK';
 import Signup from '../Screens/SignUp';
 import AppNavigator from '../navigation/AppNavigator';
@@ -19,7 +19,8 @@ const SignUp = ({navigation}) => {
       await firebase.auth().createUserWithEmailAndPassword(email,password) 
             
         .then(()=> alert('Đăng kí tài khoản thành công'),
-		navigation.goBack())   
+		navigation.navigate(AppNavigator)
+    )   
     } catch (error){
       alert('Đăng kí tài khoản không thành công')
     }
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
      }
 })
 
-export default Signup;
+export  {SignUp};
 
 
 // import React from 'react';

@@ -1,12 +1,21 @@
-import React from 'react';  
+import React,{useState,useEffect} from 'react';  
+import { View ,Text,Image,ImageBackground,TouchableOpacity} from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 
-export default class Chat extends React.Component {  
-  render() {
-    return <GiftedChat />;
-  }
+function Chat(props){
+  const {numberOfStars}=props
+  return <View style={{
+    flexDirection:'column'
+  }}>
+    
+    <Text style={{
+      color:'black'
+    }}>This is Chat</Text>
+  </View>
 }
-////************* */
+export default Chat
+
+//************* */
 // import React from 'react';
 // import { GiftedChat } from 'react-native-gifted-chat'; 
 
@@ -52,7 +61,7 @@ export default class Chat extends React.Component {
 // 		firebaseSDK.refOff();
 // 	}
 // }
-//******************************************** */
+/******************************************** */
 // import React, { useState, useEffect, useCallback } from 'react'
 // import { GiftedChat } from 'react-native-gifted-chat'
 // import AsyncStorage from '@react-native-community/async-storage'

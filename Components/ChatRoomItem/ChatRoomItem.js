@@ -4,8 +4,6 @@ import ChatRooms from '../../assets/dummy-data/ChatRooms';
 import hinhdaidien from '../../assets/hinhdaidien.png'
 import Chat from '../Chat';
 
-
-
 export default function ChatRoomItem({chatRoom}){   
     const user=chatRoom?.users[0];
   
