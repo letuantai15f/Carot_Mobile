@@ -4,6 +4,7 @@ import {View, StyleSheet,Text ,TouchableOpacity,TextInput} from 'react-native';
 import { firebase } from '../config/firebaseSDK';
 // import Signup from '../Screens/SignUp';
 import AppNavigator from '../navigation/AppNavigator';
+import Login from './Login';
 // import Login from './Login';
 
 
@@ -18,8 +19,7 @@ const SignUp = ({navigation}) => {
     try {
       await firebase.auth().createUserWithEmailAndPassword(email,password) 
             
-        .then(()=> alert('Đăng kí tài khoản thành công'),
-		navigation.goBack())   
+        .then(()=>  navigation.navigate(Login))   
     } catch (error){
       alert('Đăng kí tài khoản không thành công')
     }

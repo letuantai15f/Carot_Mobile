@@ -13,8 +13,8 @@ export default function App() {
   return (     
     <NavigationContainer>
      <Stack.Navigator initialRouteName="../Carot_Mobile/Screens/Login.js" screenOptions={{headerShown:false}}>
-        <Stack.Screen name='SignUp' component={SignUp}/>
         <Stack.Screen name='Login' component={Login}/>
+        <Stack.Screen name='SignUp' component={SignUp}/>
         <Stack.Screen name='AppNavigator' component={AppNavigator}/>
      </Stack.Navigator>  
       
