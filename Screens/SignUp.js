@@ -18,8 +18,8 @@ const SignUp = ({navigation}) => {
     try {
       await firebase.auth().createUserWithEmailAndPassword(email,password) 
             
-      .then(()=> alert('Đăng kí tài khoản thành công'),
-      navigation.navigate(AppNavigator))
+        .then(()=> alert('Đăng kí tài khoản thành công'),
+		navigation.goBack())   
     } catch (error){
       alert('Đăng kí tài khoản không thành công')
     }
@@ -59,8 +59,7 @@ const SignUp = ({navigation}) => {
         style={styles.button}>
           <Text style={{fontWeight:"bold",fontSize:21}}>SignUp</Text>
         </TouchableOpacity>
-
-                  
+      
 
     </View>
   );
