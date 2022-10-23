@@ -2,7 +2,7 @@ import React  , {useState } from 'react';
 import {View, StyleSheet,Text ,TouchableOpacity,TextInput} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { firebase } from '../config/firebaseSDK';
-import Signup from '../Screens/SignUp';
+import SignUp from '../Screens/SignUp';
 import AppNavigator from '../navigation/AppNavigator';
 
 
@@ -51,7 +51,7 @@ const Login = ({navigation}) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-           onPress={()=>navigation.navigate(Signup)}
+           onPress={()=>navigation.navigate(SignUp)}
            style={{marginTop:20}}>
              <Text style={{fontWeight:"bold",fontSize:16}}>   
               Don't have an accout?Registry Now
