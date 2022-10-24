@@ -74,7 +74,7 @@ export default  function Chat()  {
 
   return (
      <GiftedChat
-      message={messages}
+      messages={messages}
       showAvatarForEveryMessage={true}
       showUserAvatar={true}
       onSend={messages => onSend(messages)}
