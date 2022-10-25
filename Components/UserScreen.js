@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from "react";
+import React  from "react";
 import {View,StyleSheet,Text,Image, ScrollView,FlatList} from 'react-native'
 
 import ChatRoomItem from './UserItem/UserItem'
@@ -6,18 +6,12 @@ import chatRoomsData from '../assets/dummy-data/ChatRooms';
 import UserItem from "./UserItem/UserItem";
 
 //HomeScreen
-export default function Chat(){
-    // const [chatRooms,setChatRooms]= useState<
-    useEffect(()=>{
-        const fetchChatRooms= async()=>{
-            
-        }
-    })
+export default function UsersScreen(){
     return(
         <View style={styles.page}>   
             <FlatList
             data={chatRoomsData}
-            renderItem={({item})=><UserItem UserItem={item}/>}
+            renderItem={({item})=><UserItem chatRoom={item}/>}
             showsVerticalScrollIndicator={false}
             />
            

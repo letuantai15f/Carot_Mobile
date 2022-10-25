@@ -1,17 +1,38 @@
 import React  , {useState } from 'react';
-import {View, StyleSheet,Text ,TouchableOpacity,TextInput} from 'react-native';
+import {View, StyleSheet,Text ,TouchableOpacity,TextInput,ToastAndroid, DrawerLayoutAndroidBase} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { firebase } from '../config/firebaseSDK';
-import Signup from '../Screens/SignUp';
+// import Signup from '../Screens/SignUp';
 import AppNavigator from '../navigation/AppNavigator';
 // import Login from './Login';
+
 
 
 const SignUp = ({navigation}) => {
   // const navigation = useNavigation()   
   const [name,setName] = useState('')
-  const [email,setEmail] = useState(' ')
-  const [password,setPassword] = useState(' ')
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
+
+//   const signupUser=async()=>{
+//     if(name ==''||email==''||password==''){
+//       ToastAndroid.show('Fill in all the fields!');
+//       return false;
+//     }
+//     let data={
+//       id:uuid.v4(),
+//       name:name,
+
+//     }
+    
+
+//     database()
+//     .ref('/users/'+data.id) 
+//     .set(data)
+//     .then(()=>{
+//       ToastAndroid.show('Signup Successfully!');
+//     })
+//   }
    
 
   const signupUser = async(email,password) =>{
@@ -24,7 +45,7 @@ const SignUp = ({navigation}) => {
     } catch (error){
       alert('Đăng kí tài khoản không thành công')
     }
-  } 
+  
   
   return (
     <View style={styles.container}>
@@ -34,6 +55,7 @@ const SignUp = ({navigation}) => {
 		      <TextInput
               style={styles.textInput}
               placeholder="Name"
+              hint
               onChangeText={(name)=>setName(name)}   
               autoCapitalize="none"
               autoCorrect={false}
@@ -62,7 +84,7 @@ const SignUp = ({navigation}) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-           onPress={()=>navigation.navigate(Signup)}
+           onPress={()=>navigation.navigate(SignUp)}
            style={{marginTop:20}}>
              <Text style={{fontWeight:"bold",fontSize:16}}>   
               Don't have an accout?Registry Now
@@ -71,7 +93,7 @@ const SignUp = ({navigation}) => {
 
     </View>
   );
-}
+  }
 
 const styles = StyleSheet.create({
      container : {
@@ -99,6 +121,7 @@ const styles = StyleSheet.create({
       borderRadius:50
      }
 })
+}
 
 export  {SignUp};
 
