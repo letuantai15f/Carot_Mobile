@@ -8,11 +8,7 @@ import UserItem from "./UserItem/UserItem";
 //HomeScreen
 export default function Chat(){
     // const [chatRooms,setChatRooms]= useState<
-    useEffect(()=>{
-        const fetchChatRooms= async()=>{
-            
-        }
-    })
+  
     return(
         <View style={styles.page}>   
             <FlatList

@@ -13,7 +13,8 @@ const firebaseConfig = {
   storageBucket: "carot-6a8cb.appspot.com",
   messagingSenderId: "364166710182",
   appId: "1:364166710182:web:9fab2ac3dbc7a60f6a0567",
-  measurementId: "G-B41LMBM2CR"
+  measurementId: "G-B41LMBM2CR",
+  databaseURL:"https://carot-6a8cb-default-rtdb.firebaseio.com"
 
 
 
@@ -33,3 +34,5 @@ if (firebase.apps.length === 0) {
 // const firebaseSDK = firebase.auth()
 
 export { firebase };
+export const auth=getAuth();
+export const database =getFirestore();

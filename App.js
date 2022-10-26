@@ -21,8 +21,7 @@ export default function App() {
       
         <Stack.Screen name='Login' component={Login}/>
         <Stack.Screen name='SignUp' component={SignUp}/>
-        <Stack.Screen name='ChatRoom' component={ChatRoomScreen} options={{headerTitle:ChatRoomHeader}}
-         />
+        <Stack.Screen name='ChatRoom' component={ChatRoomScreen} options={{headerTitle:ChatRoomHeader}} />
         <Stack.Screen name='AppNavigator' component={AppNavigator}/>
      </Stack.Navigator>  
       

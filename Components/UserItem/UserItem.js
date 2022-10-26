@@ -4,10 +4,13 @@ import ChatRooms from '../../assets/dummy-data/ChatRooms';
 import hinhdaidien from '../../assets/hinhdaidien.png'
 import Chat from '../Chat';
 import { useNavigation } from "@react-navigation/core";
+import firebase from 'firebase/compat';
 
+
+
+//danh sách chat
 export default function UserItem({UserItem}){   
-//     const [user, setUser] = useState<User | null>(null); // the display user
-//   const [lastMessage, setLastMessage] = useState<Message | undefined>();
+
   const [isLoading, setIsLoading] = useState(true);
     const user=UserItem?.users[0];
 
@@ -16,17 +19,9 @@ export default function UserItem({UserItem}){
     const onPress = async () => {
         console.warn('pressed on',user.name)
         navigation.navigate("ChatRoom", { id: UserItem.id });
-
-        // create a chat room
-        // const newChatRoom =await DataStore.save(new chatRoom({newMessage:0}))
-
-        //connect authenticated user with the chat room
-       // const authUser =await Auth.currentAuthenticatedUser(); 
-    //    const dbUser=await DataStore.query(d)
-
-    //connect clicked user the chat room
+     
       };
-  
+  //lấy dữ liệu
   return(
     <Pressable onPress={onPress} style={styles.container}>
 
