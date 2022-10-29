@@ -68,7 +68,7 @@ const Login = ({ navigation }) => {
             onPress={() => navigation.navigate({ name: 'SignUp' })}
             style={{ marginTop: 20 }}>
             <Text style={{  fontSize: 16 }}>
-              Bạn chưa có tài khoản? Đăng ký ngay
+              Bạn chưa có tài khoản? <Text style={{color:'#ff4c00',fontWeight:'bold'}}>ĐĂNG KÝ NGAY</Text> 
             </Text>
           </TouchableOpacity>
         </View>
