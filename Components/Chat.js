@@ -1,32 +1,168 @@
-import React, { useEffect, useState }  from "react";
-import {View,StyleSheet,Text,Image, ScrollView,FlatList} from 'react-native'
 
-import ChatRoomItem from './UserItem/UserItem'
-import chatRoomsData from '../assets/dummy-data/ChatRooms';
-import UserItem from "./UserItem/UserItem";
+import React,{useState,useEffect, Component} from 'react'
+import { View, Text, StyleSheet, Image,Pressable,SafeAreaView,FlatList, TouchableOpacity, AsyncStorage,} from 'react-native';
 
-//HomeScreen
-export default function Chat(){
-    // const [chatRooms,setChatRooms]= useState<
-  
-    return(
-        <View style={styles.page}>   
-            <FlatList
-            data={chatRoomsData}
-            renderItem={({item})=><UserItem UserItem={item}/>}
-            showsVerticalScrollIndicator={false}
-            />
-           
-       </View>
-    );
-}
+import { useNavigation } from "@react-navigation/core";
+// import firebase from 'firebase/compat';
+import { List } from 'react-native-paper';
+import { UpdataUserImage } from './User/User';
+import { firebase } from '../config/firebaseSDK';
+import ChatScreen from '../Screens/ChatScreen';
+import Navigation from '../Service/Navigation';
 
-const styles=StyleSheet.create({
-    page:{
-        backgroundColor:'white',
-        flex:1
+
+
+class Chat extends Component{
+    state={
+        allUsers:[],
+        loader:false,
+        imageUrl:'',
+        loggedInUserName:'',
     }
-});
+    async componentDidMount(){
+        try {
+            this.setState({loader:true})
+            firebase.database().ref('users')
+                .on("value", async (datasnapshot) => {
+                    const uuid = firebase.auth().currentUser.uid;
+                    // const uuid=await AsyncStorage.getItem('UID');
+                    console.log('uuid ', uuid);
+                    let users = [];
+                    datasnapshot.forEach((child) => {
+                        if (child.val().uuid === uuid) {
+                            console.log('uuid', uuid);
+                            this.setState({ loggedInUserName: child.val().name });
+                            this.setState({ imageUrl: child.val().image });
+                        } else {
+                            users.push({
+                                usersName: child.val().name,
+                                uuid: child.val().uuid,
+                                imageUrl: child.val().image,
+                            });
+                        }
+                    });
+                    this.setState({ allUsers: users, loader: false });
+                })
+        } catch (error) {
+            alert(error);
+            this.setState({loader:false})
+        }
+    }
+    render(){
+        return(
+            <View style={{flex:1,backgroundColor:'#cccc'}}>
+                <FlatList 
+                alwaysBounceVertical={false}
+                data={this.state.allUsers}
+                style={{padding:5}}
+                keyExtractor={(_,index)=>index.toString()}
+                renderItem={({item})=>(
+                    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+                        <TouchableOpacity style={styles.container} onPress={() =>this.props.navigation.navigate('ChatRoomScreen',{usersName:item.usersName,guestUid:item.uuid })}>
+                            
+                        <View style={{width:'12%',alignItems:'center',justifyContent:'center'}}>
+                            <Image source={{uri:item.imageUrl===''? 'https://luv.vn/wp-content/uploads/2021/08/hinh-anh-gai-xinh-71.jpg':item.imageUrl}} style={styles.hinhdaidienTN}/>
+                        </View>
+                        <View style={styles.rightContainer}>
+                            <View style={styles.row}>
+                            <Text style={styles.tennguoinhan}>{item.usersName}</Text>
+                        
+                            <Text style={styles.timetext}>{item.lastTime}</Text>
+                            </View>
+                            <Text numberOfLines={1} style={styles.timetext}>{item.lastMessage}</Text>
+                           
+                        </View>
+                    </TouchableOpacity>
+                    </SafeAreaView>
+                   
+                      )}
+                />
+            </View>
+        )
+    }
+}
+export default Chat;
+const styles=StyleSheet.create({
+    container:{
+        
+        flexDirection:"row",
+        padding:10
+                
+    },
+    badgeContainer:{
+        backgroundColor:'#3872E9',
+        width:25,
+        height:25,
+        borderRadius:15,
+        justifyContent:'center',
+        alignItems:'center' ,
+        position:'absolute',
+        left:65,
+        top:10,
+        borderColor:'white'
+  
+    },
+    rightContainer:{
+        flex:1,
+        justifyContent:'center',
+        padding:15
+    },
+    row:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        margin:10,
+    },
+    badgeText:{
+        color:'white',
+        fontSize:15,
+    },
+    tennguoinhan:{
+        fontSize:18,
+        fontWeight:'bold',
+        
+    },
+    hinhdaidienTN:{
+        height:70,
+        width:70,
+        borderRadius:50,
+        marginLeft:10
+       
+    },
+    timetext:{
+        color:'grey'
+    }
+  });
+
+
+// import React, { useEffect, useState }  from "react";
+// import {View,StyleSheet,Text,Image, ScrollView,FlatList} from 'react-native'
+
+// import ChatRoomItem from './UserItem/UserItem'
+// import chatRoomsData from '../assets/dummy-data/ChatRooms';
+// import UserItem from "./UserItem/UserItem";
+
+// //HomeScreen
+// export default function Chat(){
+//     // const [chatRooms,setChatRooms]= useState<
+  
+//     return(
+//         <View style={styles.page}>   
+//             <FlatList
+//             data={chatRoomsData}
+//             renderItem={({item})=><UserItem UserItem={item}/>}
+//             showsVerticalScrollIndicator={false}
+//             />
+           
+//        </View>
+//     );
+// }
+
+// const styles=StyleSheet.create({
+//     page:{
+//         backgroundColor:'white',
+//         flex:1
+//     }
+// });
 
 
 

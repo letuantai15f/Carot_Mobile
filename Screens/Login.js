@@ -18,9 +18,11 @@ const Login = ({navigation}) => {
 
   const loginUser = async(email,password) =>{
     try {
+      
       await firebase.auth().signInWithEmailAndPassword(email,password) 
-            
-        .then(()=>navigation.navigate(AppNavigator))      
+      
+        .then(()=>navigation.navigate(AppNavigator))   
+        console.log('dang nhap thanh cong')
     } catch (error){
       alert('Tài khoản chưa được đăng kí')
     }

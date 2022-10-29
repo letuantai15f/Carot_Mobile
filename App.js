@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AppNavigator from './navigation/AppNavigator';
 import Login from './Screens/Login';
 import {SignUp} from './Screens/SignUp';
-import ChatRoomScreen from './Screens/ChatRoomScreen';
+import ChatScreen from './Screens/ChatScreen';
 import UsersScreen from './Components/UserScreen';
 import {
   SimpleLineIcons,Feather, MaterialCommunityIcons,AntDesign, Ionicons,
@@ -21,8 +21,10 @@ export default function App() {
       
         <Stack.Screen name='Login' component={Login}/>
         <Stack.Screen name='SignUp' component={SignUp}/>
-        <Stack.Screen name='ChatRoom' component={ChatRoomScreen} options={{headerTitle:ChatRoomHeader}} />
+        
         <Stack.Screen name='AppNavigator' component={AppNavigator}/>
+        <Stack.Screen name='ChatRoomScreen' component={ChatScreen} options={{headerTitle:ChatRoomHeader}} />
+       
      </Stack.Navigator>  
       
     </NavigationContainer>
