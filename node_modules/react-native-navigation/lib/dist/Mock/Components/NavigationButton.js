@@ -31,8 +31,9 @@ const NavigationButton = class extends react_1.Component {
         const props = react_native_navigation_1.Navigation.mock.store.getPropsForId(buttonComponentId);
         return (react_1.default.createElement(react_native_1.TouchableOpacity, { onPress: () => {
                 if (this.ref) {
+                    this.invokeOnClick(
                     // @ts-ignore
-                    this.invokeOnClick(this.ref._reactInternalFiber.return.stateNode);
+                    (this.ref._reactInternalFiber || this.ref._reactInternals).return.stateNode);
                 }
                 EventsStore_1.events.invokeNavigationButtonPressed({
                     buttonId: button.id,
