@@ -3,26 +3,11 @@ import { AntDesign } from '@expo/vector-icons';
 import {Ionicons,MaterialCommunityIcons} from '@expo/vector-icons'
 import {View,StyleSheet,Text, Image, ScrollView, TextInput, Button, Touchable, TouchableOpacity} from 'react-native'
 
-state={
-    allUsers:[],
-    loader:false,
-    imageUrl:''
-}
-export function Home(){
-    
-    const openGallery=()=>{
-        launchImageLibrary('photo',(response)=>{
-            console.log('res',response);
-            this.setSate({imageUrl:response.uri});
-        })
-    }
+const Home = () =>{
     return(
         <ScrollView style={styles.container}>
            <View style={styles.top}>
-            <TouchableOpacity>
-            <Image source={this?.state?.imageUrl===''? require('../image/ic_account.png'):this?.state?.imageUrl} style={styles.image}/>
-            </TouchableOpacity>
-           
+            <Image source={require('../image/ic_account.png')} style={styles.image}></Image>
             <TextInput style={styles.textinput}  placeholder='Hôm nay bạn thế nào?' />
            </View>
            <View style={styles.more}>

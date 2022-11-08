@@ -14,7 +14,6 @@ import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
 import { Colors } from "react-native-paper";
-import UsersScreen from "../Components/UserScreen";
 
 
 
@@ -34,7 +33,6 @@ const AppNavigator = () =>{
             component={Notifications} name='Notifications'/>
             <Tab.Screen options={{title:props =><Feather name="user" size={24} color="black" />}} 
             component={Profile} name='Profile'/>
-            
         </Tab.Navigator>
     )
 }

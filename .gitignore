@@ -1,6 +1,5 @@
- yarn.lock
-
+ 
+yarn.lock
+yarn-error.log
 # macOS
 .DS_Store
-node_modules
-node_modules
