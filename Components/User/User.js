@@ -22,4 +22,3 @@ export const UpdataUserImage=async(image,uid)=>{
         return console.error();
     }
 }
-Footer

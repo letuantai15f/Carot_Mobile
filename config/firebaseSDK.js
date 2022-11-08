@@ -3,11 +3,6 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import 'firebase/compat/firestore'
 import { getFirestore } from 'firebase/firestore';
-// import * as firebase from "firebase";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
 	apiKey: "AIzaSyDv8NgmBvo2SBI9FUZ6JPsBA0pl2ZDoI68",
   authDomain: "carot-6a8cb.firebaseapp.com",
@@ -25,14 +20,6 @@ const firebaseConfig = {
 if (firebase.apps.length === 0) {
   app = firebase.initializeApp(firebaseConfig);
 } 
-
-// login =async(user,success_callback,failed_callback) =>{
-// 	await firebaseSDK
-// 	            .auth()
-// 				.signInWithEmailAndPassword()
-// } 
-
-// const firebaseSDK = firebase.auth()
 
 export { firebase };
 export const auth=getAuth();
