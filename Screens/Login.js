@@ -18,11 +18,19 @@ const Login = ({ navigation }) => {
 
   const loginUser = async (email, password) => {
     try {
+      if(firebase.auth().currentUser.sendEmailVerification()!=null){
+        firebase.auth().signInWithEmailAndPassword(email, password)
+          .then(() => navigation.navigate(AppNavigator))
+          console.log('dang nhap thanh cong')
+      }else{
+        alert('bạn chưa xác thực tài khoản')
+        console.log('chua xac thuc tài khoản')
+      }
 
-      await firebase.auth().signInWithEmailAndPassword(email, password)
 
-        .then(() => navigation.navigate(AppNavigator))
-      console.log('dang nhap thanh cong')
+        // firebase.auth().signInWithEmailAndPassword(email, password)
+        //   .then(() => navigation.navigate(AppNavigator))
+     
     } catch (error) {
       alert('Tài khoản chưa được đăng kí')
     }
@@ -52,6 +60,7 @@ const Login = ({ navigation }) => {
           <TextInput
             style={styles.textInput}
             placeholder="Mật khẩu"
+            secureTextEntry={true}
             onChangeText={(password) => setPassword(password)}
             autoCapitalize="none"
             autoCorrect={false}

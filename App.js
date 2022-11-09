@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AppNavigator from './navigation/AppNavigator';
 import Login from './Screens/Login';
 import SignUp from './Screens/SignUp';
+import ChatRoomScreen from './Screens/ChatRoomScreen';
+import Chat from './Components/Chat';
 
 const Stack=createNativeStackNavigator();
 
@@ -16,6 +18,8 @@ export default function App() {
         <Stack.Screen name='Login' component={Login}/>
         <Stack.Screen name='SignUp' component={SignUp}/>
         <Stack.Screen name='AppNavigator' component={AppNavigator}/>
+        <Stack.Screen name='ChatRoomScreen' component={ChatRoomScreen}/>
+        <Stack.Screen name='Chat' component={Chat}/>
      </Stack.Navigator>  
       
     </NavigationContainer>

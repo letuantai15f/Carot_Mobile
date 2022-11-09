@@ -14,6 +14,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
 import { Colors } from "react-native-paper";
+import ChatRoomScreen from "../Screens/ChatRoomScreen";
 
 
 
@@ -26,7 +27,7 @@ const AppNavigator = () =>{
             <Tab.Screen  options={{title:props =><AntDesign name="home" size={24} color="black"   />}}
             component={Home} name='Home'/>
             <Tab.Screen  options={{title:props =><Ionicons name="chatbox-ellipses-outline" size={24} color="black" />}}
-            component={Chat} name='Chat'/>
+            component={ChatRoomScreen} name='ChatRoomScreen'/>
             <Tab.Screen options={{title:props =><AntDesign name="adduser" size={24} color="black" />}}
             component={AddFriends} name='AddFriends'/>
             <Tab.Screen options={{title:props =><Ionicons name="notifications-outline" size={24} color="black" />}} 

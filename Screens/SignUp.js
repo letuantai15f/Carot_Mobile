@@ -1,5 +1,5 @@
 import React  , {useState } from 'react';
-import {View, StyleSheet,Text ,TouchableOpacity,TextInput,ToastAndroid, DrawerLayoutAndroidBase,Image} from 'react-native';
+import {View, StyleSheet,Text ,TouchableOpacity,TextInput,ToastAndroid, DrawerLayoutAndroidBase,Image, ScrollView} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { firebase } from '../config/firebaseSDK';
 // import Signup from '../Screens/SignUp';
@@ -22,37 +22,48 @@ function SignUp  ({navigation}) {
   const [gender,setGender] = useState('')
 
   const signupUser = async(email,password) =>{
-    
-
-    try {
-      await firebase.auth().createUserWithEmailAndPassword(email,password)   
+    await firebase.auth().createUserWithEmailAndPassword(email,password,date,gender,password)   
         .then(()=>{ 
           firebase.auth().currentUser.sendEmailVerification({
             handleCodeInApp:true,
-            url:'carot-6a8cb.firebaseapp.com'
-          }) .then(()=>{alert('Xác minh gmail')}).catch((error)=>{alert(error.message)
-          })
-
-
-           var userID=firebase.auth().currentUser.uid;
-          AddUser(name,email,'',userID).then(()=>{
-            alert("Success");
-            navigation.navigate(AppNavigator)
+            url:'https://carot-6a8cb.firebaseapp.com',
+          }).then(()=>{alert('Xác minh gmail hoàn tất đăng ký')
           }).catch((error)=>{
-            alert(error);
+            alert(error.message)
+          }).then(()=>{
+            firebase.firestore().collection('users')
+            .doc(firebase.auth().currentUser.uid).set({
+              name:name,
+              email:email,
+              date:date,
+              password:password,
+              gender:gender,
+              uid:firebase.auth().currentUser.uid,
+            })
+          }).catch((error)=>{
+            alert(error.message)
+            console.log('lỗi',error.message)
           })
-          console.log(userID);
-        }
-    )   
-    } catch (error){
-      alert('Đăng kí tài khoản không thành công')
-    }
+          //  var userID=firebase.auth().currentUser.uid;
+          // AddUser(name,email,'',userID).then(()=>{
+          //   alert("Success");
+          //   navigation.navigate(AppNavigator)
+          // }).catch((error)=>{
+          //   alert(error);
+          // })
+          // console.log(userID);
+        })  
+        
+      
   }
 
 
   return (
    
     <View style={styles.container}>
+      <ScrollView>
+
+    
 
 <View style={styles.navtop}>
 
@@ -82,6 +93,7 @@ function SignUp  ({navigation}) {
               <Text style={styles.textnoti}>Mật khẩu</Text> 
               <TextInput
               style={styles.textInput}
+              secureTextEntry={true}
               placeholder="Mật khẩu"
               onChangeText={(password)=>setPassword(password)}   
               autoCapitalize="none"
@@ -90,6 +102,7 @@ function SignUp  ({navigation}) {
               <Text style={styles.textnoti}>Nhập lại mật khẩu</Text> 
               <TextInput
               style={styles.textInput}
+              secureTextEntry={true}
               placeholder="Nhập lại mật khẩu"
               onChangeText={(repassword)=>setRePassword(password)}   
               autoCapitalize="none"
@@ -128,6 +141,7 @@ function SignUp  ({navigation}) {
   </TouchableOpacity>
 </View>
 </View>
+</ScrollView>
 
 
 
