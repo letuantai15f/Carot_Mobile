@@ -44,20 +44,10 @@ function SignUp  ({navigation}) {
             alert(error.message)
             console.log('lỗi',error.message)
           })
-          //  var userID=firebase.auth().currentUser.uid;
-          // AddUser(name,email,'',userID).then(()=>{
-          //   alert("Success");
-          //   navigation.navigate(AppNavigator)
-          // }).catch((error)=>{
-          //   alert(error);
-          // })
-          // console.log(userID);
         })  
         
       
   }
-
-
   return (
    
     <View style={styles.container}>
@@ -143,47 +133,6 @@ function SignUp  ({navigation}) {
 </View>
 </ScrollView>
 
-
-
-       {/* <View style={styles.navtop}>
-     <Text style={styles.textlogin}>CAROT</Text>
-     <Image style={styles.img} source={imgcarrot}/>
-     </View>
-      
-        <View style={{marginTop:40}}>
-        <Text style={styles.textnoti}>Họ tên</Text>
-		      <TextInput
-              style={styles.textInput}
-              placeholder="Name"
-              onChangeText={(name)=>setName(name)}   
-              autoCapitalize="none"
-              autoCorrect={false}
-              />
-              <Text style={styles.textnoti}>Email</Text>
-             <TextInput
-              style={styles.textInput}
-              placeholder="Email"
-              onChangeText={(email)=>setEmail(email)}   
-              autoCapitalize="none"
-              autoCorrect={false}
-              />
-              <Text style={styles.textnoti}>Mật khẩu</Text> 
-              <TextInput
-              style={styles.textInput}
-              placeholder="Password"
-              onChangeText={(password)=>setPassword(password)}   
-              autoCapitalize="none"
-              autoCorrect={false}
-              />
-        </View>
-
-        <TouchableOpacity
-        onPress={()=>signupUser(email,password)}
-        style={styles.button}>
-          <Text style={{fontWeight:"bold",fontSize:21,color:'white'}}>Đăng ký</Text>
-        </TouchableOpacity> */}
-
-      
     </View>
   );
   }

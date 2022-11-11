@@ -16,25 +16,33 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState(' ')
 
 
-  const loginUser = async (email, password) => {
-    try {
-      if(firebase.auth().currentUser.sendEmailVerification()!=null){
-        firebase.auth().signInWithEmailAndPassword(email, password)
-          .then(() => navigation.navigate(AppNavigator))
-          console.log('dang nhap thanh cong')
-      }else{
-        alert('bạn chưa xác thực tài khoản')
-        console.log('chua xac thuc tài khoản')
+  // const loginUser = async (email, password) => {
+  //   try {
+  //     if(firebase.auth().currentUser.sendEmailVerification()!=null){
+  //       firebase.auth().signInWithEmailAndPassword(email, password)
+  //         .then(() => navigation.navigate(AppNavigator))
+  //         console.log('dang nhap thanh cong')
+  //     }else{
+  //       alert('bạn chưa xác thực tài khoản')
+  //       console.log('chua xac thuc tài khoản')
+  //     }  
+  //   } catch (error) {
+  //     alert('Tài khoản chưa được đăng kí')
+  //   }
+  // }
+  const loginUser=async(email,password)=>{
+    fetch('http://192.168.1.33:3000/api/login', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password
+      }),
+    }); 
       }
-
-
-        // firebase.auth().signInWithEmailAndPassword(email, password)
-        //   .then(() => navigation.navigate(AppNavigator))
-     
-    } catch (error) {
-      alert('Tài khoản chưa được đăng kí')
-    }
-  }
 
   return (
     <View style={styles.container}>
